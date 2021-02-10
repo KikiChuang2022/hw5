@@ -69,9 +69,9 @@ function renderRides(ridesArray) {
 
 window.addEventListener('DOMContentLoaded', function() {
   // YOUR CODE
-  let filters = document.querySelectorAll('.filter-button')
+  let filterButton = document.querySelectorAll('.filter-button')
 
-  for (var i = 0, element; element = filters[i]; i++) {
+  for (var i = 0, element; element = filterButton[i]; i++) {
 
     element.addEventListener('click',async function(event){
       event.preventDefault()
@@ -86,23 +86,23 @@ window.addEventListener('DOMContentLoaded', function() {
       if(event.toElement.id == 'all-filter'){
         renderRides(json)
       }else{
-        let keyword = ''
+        let service = ''
         if(event.toElement.id == 'noober-pool-filter'){
-          keyword = 'Noober Pool'
+          service = 'Noober Pool'
         }else if(event.toElement.id == 'noober-purple-filter'){
-          keyword = 'Noober Purple'
+          service = 'Noober Purple'
         }else if(event.toElement.id == 'noober-xl-filter'){
-          keyword = 'Noober XL'
+          service = 'Noober XL'
         }else if(event.toElement.id == 'noober-x-filter'){
-          keyword = 'Noober X'
+          service = 'Noober X'
         }
-        let filteredArray = []
+        let serviceFilter = []
         for(i = 0; i<json.length ; i++){
-          if(levelOfService(json[i])==keyword){
-              filteredArray.push(json[i])
+          if(levelOfService(json[i])==service){
+            serviceFilter.push(json[i])
           }
         }
-        renderRides(filteredArray)
+        renderRides(serviceFilter)
       }
     })
   }
